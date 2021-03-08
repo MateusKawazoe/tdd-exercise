@@ -1,4 +1,4 @@
-const Client = require('../model/client')
+const Client = require('../model/clientValidate')
 
 describe('Client', () => {
     test('Test client model', () => {
