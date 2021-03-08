@@ -2,8 +2,6 @@ const Client = require('../model/client')
 
 describe('Client', () => {
     test('Test client model', () => {
-        const test = new Client()
-
         var client = {
             name: 'Lucas',
             wage: 975.00,
@@ -11,7 +9,7 @@ describe('Client', () => {
             factor: 2.0
         }
 
-        var errors = test.client.validate(client)
+        var errors = Client.validate(client)
 
         expect(errors[0]).toBe(undefined)
         expect(errors[1]).toBe(undefined)
@@ -24,7 +22,7 @@ describe('Client', () => {
             installment: '3'
         }
 
-        errors = test.client.validate(client)
+        errors = Client.validate(client)
 
         expect(errors[0].message).toBe('Name is required and must have a length between 3 and 32')
         expect(errors[1].message).toBe('Wabe is required and must be a number')
