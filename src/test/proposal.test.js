@@ -1,11 +1,11 @@
 const { toBeDeepCloseTo, toMatchCloseTo } = require('jest-matcher-deep-close-to')
-const Proposal = require('../controller/proposal')
+const proposal = require('../controller/proposal')
 const Client = require('../model/client')
 
 expect.extend({ toBeDeepCloseTo, toMatchCloseTo })
 
 describe('Proposal', () => {
-    let client, deal, auxDeal
+    let client, deal
 
     it('Test toBeDeepCloseTo', () => {
         expect([42.00063]).toBeDeepCloseTo([42.0006], 4)
@@ -18,18 +18,11 @@ describe('Proposal', () => {
 
     test('Wage under 1000.01', () => {
         client = new Client('Lucas', 18, 975.15, 2, 2.0)
-        auxDeal = {
+        deal = proposal(client, 1000.00)
 
-        }
-
-        deal = Proposal(client, 1000.00)
-
-        it('Test financied amount', () => {
-            expect(deal.financied).toBeDeepCloseTo([2000.00], 2)
-        })
+        expect(deal.financed).toBe(1000.00)
+        expect(deal.totalToPay).toBe(2000.00)
         expect(deal.installment).toBe(client.getInstallment())
-        it('Test installment amount', () => {
-            expect(deal.instalmmentAmount).toBeDeepCloseTo([1000.00], 2)
-        })
+        expect(deal.installmentAmount).toBe(1000.00)
     })
 })
