@@ -3,6 +3,6 @@ module.exports = function proposal(client, value) {
         financed: value,
         totalToPay: client.getFactor()*value,
         installment: client.getInstallment(),
-        installmentAmount: (client.getFactor()*value)/client.getInstallment()
+        installmentAmount: parseFloat(((client.getFactor()*value)/client.getInstallment()).toFixed(2))
     }
 }
