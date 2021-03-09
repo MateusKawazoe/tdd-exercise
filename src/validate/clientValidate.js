@@ -16,6 +16,7 @@ module.exports = new Schema({
     wage: {
         type: Number,
         required: true,
+        match: /^[1-9]*$/,
         message: 'Wabe is required and must be a number'
     },
     installment: {
