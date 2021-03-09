@@ -1,6 +1,7 @@
 module.exports = class Client {
-    constructor(name, wage, installment, factor) {
+    constructor(name, age, wage, installment, factor) {
         this.setName(name),
+        this.setAge(age),
         this.setWage(wage),
         this.setInstallment(installment),
         this.setFactor(factor)
@@ -8,6 +9,10 @@ module.exports = class Client {
 
     setName(name) {
         this.name = name
+    }
+
+    setAge(age) {
+        this.age = age
     }
 
     setWage(wage) {
@@ -24,6 +29,10 @@ module.exports = class Client {
 
     getName() {
         return this.name
+    }
+
+    getAge() {
+        return this.age
     }
 
     getWage() {
